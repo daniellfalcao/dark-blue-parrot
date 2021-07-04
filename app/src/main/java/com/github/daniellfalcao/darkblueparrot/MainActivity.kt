@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.parrot
+package com.github.daniellfalcao.darkblueparrot
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

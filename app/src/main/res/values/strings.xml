@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Parrot</string>
+    <string name="dynamic_feature_authentication">Authentication</string>
+    <string name="dynamic_feature_home">Home</string>
+    <string name="dynamic_feature_bookmark">Bookmark</string>
+    <string name="dynamic_feature_profile">Profile</string>
 </resources>

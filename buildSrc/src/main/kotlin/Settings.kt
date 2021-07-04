@@ -1,5 +1,3 @@
-import org.gradle.api.JavaVersion
-
 object Settings {
 
     const val applicationId = "com.github.daniellfalcao.darkblueparrot"
@@ -31,8 +29,6 @@ object Settings {
     }
 
     object CompileOptions {
-        const val kotlinJvmTarget = "1.8"
-        val javaVersion = JavaVersion.VERSION_1_8
         val freeCompilerArgs = listOf("-Xopt-in=kotlin.RequiresOptIn")
     }
 

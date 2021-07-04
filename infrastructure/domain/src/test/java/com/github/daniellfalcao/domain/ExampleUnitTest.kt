@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.parrot
+package com.github.daniellfalcao.domain
 
 import org.junit.Test
 

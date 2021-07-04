@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
+    id("org.jetbrains.kotlin.plugin.parcelize")
 }
 
 android {
@@ -26,15 +27,18 @@ android {
         }
     }
 
-    compileOptions {
-        sourceCompatibility = Settings.CompileOptions.javaVersion
-        targetCompatibility = Settings.CompileOptions.javaVersion
-    }
-
     kotlinOptions {
-        jvmTarget = Settings.CompileOptions.kotlinJvmTarget
         freeCompilerArgs = Settings.CompileOptions.freeCompilerArgs
     }
+
+    dynamicFeatures = mutableSetOf(
+        Modules.Feature.authenticationProject,
+        Modules.Feature.homeProject,
+        Modules.Feature.bookmarkProject,
+        Modules.Feature.profileProject
+    )
+
+    buildFeatures.viewBinding = true
 
 }
 

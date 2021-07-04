@@ -1,2 +1,17 @@
-rootProject.name = "Parrot"
+rootProject.name = "parrot"
+
+// main module
 include ':app'
+
+// features
+include ':features:authentication'
+include ':features:home'
+include ':features:bookmark'
+include ':features:profile'
+
+//infrastructure
+include ':infrastructure:common'
+include ':infrastructure:common-ui'
+include ':infrastructure:data'
+include ':infrastructure:domain'
+include ':infrastructure:test'
