@@ -33,6 +33,7 @@
         <!--Component styles-->
         <item name="materialButtonStyle">@style/Widget.Parrot.Button.Primary</item>
         <item name="materialButtonOutlinedStyle">@style/Widget.Parrot.OutlinedButton.Primary</item>
+        <item name="circularProgressIndicatorStyle">@style/Widget.Parrot.CircularProgressIndicator</item>
     </style>
     <!-- Splash Theme-->
     <style name="Theme.Parrot.Splash" parent="Theme.Parrot">

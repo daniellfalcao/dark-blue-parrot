@@ -45,6 +45,12 @@
         <item name="android:paddingStart">@dimen/keyline_4</item>
         <item name="android:paddingEnd">@dimen/keyline_4</item>
     </style>
+    <!-- Circular progress indicator -->
+    <style name="Widget.Parrot.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
+        <item name="indicatorInset">0dp</item>
+        <item name="trackCornerRadius">4dp</item>
+        <item name="trackThickness">4dp</item>
+    </style>
     <!-- Buttons theme overlay -->
     <style name="ThemeOverlay.Parrot.Button.PrimaryVariant" parent="Theme.Parrot">
         <item name="colorPrimary">@color/primary_variant</item>
@@ -58,4 +64,5 @@
         <item name="colorSecondary">@color/white</item>
         <item name="colorPrimary">@color/white</item>
     </style>
+
 </resources>
