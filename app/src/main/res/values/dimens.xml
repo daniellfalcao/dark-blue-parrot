@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Keylines -->
+    <dimen name="keyline_1">2dp</dimen>
+    <dimen name="keyline_2">8dp</dimen>
+    <dimen name="keyline_3">16dp</dimen>
+    <dimen name="keyline_4">24dp</dimen>
+    <dimen name="keyline_5">32dp</dimen>
+    <dimen name="keyline_6">48dp</dimen>
+    <!-- Components -->
+    <dimen name="default_button_height">40dp</dimen>
+</resources>

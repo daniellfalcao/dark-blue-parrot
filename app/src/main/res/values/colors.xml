@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- Icon color -->
     <color name="ic_launcher_background">#001321</color>
-
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
+    <!-- Status bar color -->
+    <color name="status_bar">#0077B5</color>
+    <!-- Base colors -->
+    <color name="invisible">#00000000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="red">#FE5132</color>
+    <color name="green">#00C471</color>
+    <color name="yellow">#FEA832</color>
+    <!-- Theme colors -->
+    <color name="primary">#00A2F4</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="primary_variant">#1B333F</color>
+    <color name="secondary">#00A2F4</color>
+    <color name="on_secondary">#FFFFFF</color>
+    <color name="secondary_variant">#1B333F</color>
+    <color name="surface">#001828</color>
+    <color name="on_surface">#FFFFFF</color>
+    <color name="background">#001321</color>
 </resources>
