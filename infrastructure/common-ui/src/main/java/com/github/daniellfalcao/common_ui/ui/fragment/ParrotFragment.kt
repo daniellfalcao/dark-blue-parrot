@@ -8,11 +8,13 @@ import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import com.github.daniellfalcao.common_ui.ui.binding.Binding
 
-class ParrotFragment<VB : ViewBinding>(
+abstract class ParrotFragment<VB : ViewBinding>(
     private val showOptionsMenu: Boolean = false
 ) : Fragment(), Binding<VB> {
 
     override var binding: VB? = null
+
+    abstract override fun onCreateViewBinding(inflater: LayoutInflater, container: ViewGroup?)
 
     override fun onCreateView(
         inflater: LayoutInflater,
