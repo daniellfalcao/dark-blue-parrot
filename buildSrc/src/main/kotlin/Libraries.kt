@@ -43,6 +43,14 @@ object Libraries {
             const val common =  "androidx.lifecycle:lifecycle-common:2.3.1"
         }
 
+        object Navigation {
+            // releases (https://maven.google.com/web/index.html#androidx.navigation)
+            private const val version = "2.3.5"
+            const val fragmentKtx = "androidx.navigation:navigation-fragment-ktx:$version"
+            const val uiKtx = "androidx.navigation:navigation-ui-ktx:$version"
+            const val dynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
+        }
+
         object Test {
             // releases (https://maven.google.com/web/index.html#androidx.test:runner)
             const val runner = "androidx.test:runner:1.4.0"
@@ -59,6 +67,12 @@ object Libraries {
         object MaterialComponents {
             // releases (https://maven.google.com/web/index.html#com.google.android.material:material)
             const val self = "com.google.android.material:material:1.4.0"
+        }
+        object Play {
+            // releases (https://maven.google.com/web/index.html#com.google.android.play:core)
+            const val core = "com.google.android.play:core:1.10.0"
+            // releases (https://maven.google.com/web/index.html#com.google.android.play:core-ktx)
+            const val coreKtx = "com.google.android.play:core-ktx:1.8.1"
         }
     }
 

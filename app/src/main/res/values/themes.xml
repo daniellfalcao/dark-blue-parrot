@@ -14,7 +14,7 @@
         <!-- System bars colors -->
         <item name="android:statusBarColor">@color/status_bar</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
-        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/status_bar</item>
+        <item name="android:navigationBarColor" tools:ignore="NewApi">@color/navigation_bar</item>
         <item name="android:windowLightNavigationBar" tools:ignore="NewApi">false</item>
         <!-- Typography -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.Parrot.Headline1</item>

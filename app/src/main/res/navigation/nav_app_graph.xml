@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/preSignFragment">
+
+    <fragment
+        android:id="@+id/preSignFragment"
+        android:name="com.github.daniellfalcao.authentication.fragment.PreSignFragment"
+        android:label="PreSignFragment"
+        app:moduleName="authentication" >
+        <action
+            android:id="@+id/action_preSignFragment_to_signInFragment"
+            app:destination="@id/signInFragment"
+            app:popUpTo="com.android.tools.property.panel.api.EnumValue$Companion$LOADING$1@6f2c9f6a" />
+        <action
+            android:id="@+id/action_preSignFragment_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInFragment"
+        android:name="com.github.daniellfalcao.authentication.fragment.SignInFragment"
+        android:label="SignInFragment"
+        app:moduleName="authentication" >
+        <action
+            android:id="@+id/action_signInFragment_to_preSignFragment"
+            app:destination="@id/preSignFragment"
+            app:popUpTo="@id/preSignFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.github.daniellfalcao.authentication.fragment.SignUpFragment"
+        android:label="SignUpFragment"
+        app:moduleName="authentication" >
+        <action
+            android:id="@+id/action_signUpFragment_to_preSignFragment"
+            app:destination="@id/preSignFragment"
+            app:popUpTo="@id/preSignFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+</navigation>

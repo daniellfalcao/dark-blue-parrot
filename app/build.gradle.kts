@@ -48,8 +48,4 @@ dependencies {
     implementation(project(Modules.Infrastructure.commonUIProject))
     implementation(project(Modules.Infrastructure.domainProject))
     implementation(project(Modules.Infrastructure.dataProject))
-    // libraries dependencies
-    implementation(Libraries.AndroidX.Lifecycle.self)
-    implementation(Libraries.AndroidX.Lifecycle.runtime)
-    implementation(Libraries.AndroidX.Lifecycle.common)
 }

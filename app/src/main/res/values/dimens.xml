@@ -8,5 +8,5 @@
     <dimen name="keyline_5">32dp</dimen>
     <dimen name="keyline_6">48dp</dimen>
     <!-- Components -->
-    <dimen name="default_button_height">40dp</dimen>
+    <dimen name="default_button_height">48dp</dimen>
 </resources>
