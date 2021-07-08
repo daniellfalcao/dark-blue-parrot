@@ -2,14 +2,14 @@
 <animation-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:drawable="@drawable/img_parrot_blue"
-        android:duration="1000" />
+        android:duration="3000" />
     <item
         android:drawable="@drawable/img_parrot_green"
-        android:duration="1000" />
+        android:duration="3000" />
     <item
         android:drawable="@drawable/img_parrot_pink"
-        android:duration="1000" />
+        android:duration="3000" />
     <item
         android:drawable="@drawable/img_parrot_yellow"
-        android:duration="1000" />
+        android:duration="3000" />
 </animation-list>
