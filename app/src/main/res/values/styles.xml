@@ -45,11 +45,22 @@
         <item name="android:paddingStart">@dimen/keyline_4</item>
         <item name="android:paddingEnd">@dimen/keyline_4</item>
     </style>
-    <!-- Circular progress indicator -->
+    <!-- CircularProgressIndicator style -->
     <style name="Widget.Parrot.CircularProgressIndicator" parent="Widget.MaterialComponents.CircularProgressIndicator">
         <item name="indicatorInset">0dp</item>
         <item name="trackCornerRadius">4dp</item>
         <item name="trackThickness">4dp</item>
+    </style>
+    <!-- TextInputLayout style -->
+    <style name="Widget.Parrot.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/input_outlined_stoke_color</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="android:textColorHint">#B9B9B9</item>
+        <item name="passwordToggleTint">@color/input_toggle_color</item>
+        <item name="boxCornerRadiusBottomEnd">@dimen/text_input_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/text_input_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/text_input_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/text_input_corner_radius</item>
     </style>
     <!-- Buttons theme overlay -->
     <style name="ThemeOverlay.Parrot.Button.PrimaryVariant" parent="Theme.Parrot">

@@ -11,6 +11,7 @@
         <item name="colorOnSecondary">@color/on_secondary</item>
         <!-- Other colors -->
         <item name="android:colorBackground">@color/background</item>
+        <item name="colorError">@color/error</item>
         <!-- System bars colors -->
         <item name="android:statusBarColor">@color/status_bar</item>
         <item name="android:windowLightStatusBar" tools:ignore="NewApi">false</item>
