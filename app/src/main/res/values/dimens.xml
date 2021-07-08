@@ -9,4 +9,5 @@
     <dimen name="keyline_6">48dp</dimen>
     <!-- Components -->
     <dimen name="default_button_height">48dp</dimen>
+    <dimen name="text_input_corner_radius">14dp</dimen>
 </resources>
