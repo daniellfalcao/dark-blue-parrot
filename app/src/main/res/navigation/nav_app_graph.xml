@@ -7,7 +7,6 @@
     <fragment
         android:id="@+id/preSignFragment"
         android:name="com.github.daniellfalcao.authentication.fragment.PreSignFragment"
-        android:label="PreSignFragment"
         app:moduleName="authentication" >
         <action
             android:id="@+id/action_preSignFragment_to_signInFragment"
@@ -19,24 +18,14 @@
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.github.daniellfalcao.authentication.fragment.SignInFragment"
-        android:label="SignInFragment"
-        app:moduleName="authentication" >
-        <action
-            android:id="@+id/action_signInFragment_to_preSignFragment"
-            app:destination="@id/preSignFragment"
-            app:popUpTo="@id/preSignFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        app:moduleName="authentication" />
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.github.daniellfalcao.authentication.fragment.SignUpFragment"
-        android:label="SignUpFragment"
         app:moduleName="authentication" >
         <action
-            android:id="@+id/action_signUpFragment_to_preSignFragment"
-            app:destination="@id/preSignFragment"
-            app:popUpTo="@id/preSignFragment"
-            app:popUpToInclusive="true" />
+            android:id="@+id/action_signUpFragment_to_signInFragment"
+            app:destination="@id/signInFragment" />
     </fragment>
 
 </navigation>

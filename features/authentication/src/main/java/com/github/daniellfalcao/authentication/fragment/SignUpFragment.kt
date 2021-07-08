@@ -8,7 +8,7 @@ import com.github.daniellfalcao.darkblueparrot.authentication.databinding.Fragme
 class SignUpFragment : ParrotFragment<FragmentSignUpBinding>() {
 
     override fun onCreateViewBinding(inflater: LayoutInflater, container: ViewGroup?) {
-        binding = FragmentSignUpBinding.inflate(inflater, container, container != null)
+        binding = FragmentSignUpBinding.inflate(inflater, container, false)
     }
 
 }

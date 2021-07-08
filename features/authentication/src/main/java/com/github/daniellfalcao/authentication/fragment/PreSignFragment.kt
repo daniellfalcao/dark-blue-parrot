@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.color
+import androidx.navigation.fragment.findNavController
 import com.github.daniellfalcao.common_ui.extension.compatColor
 import com.github.daniellfalcao.common_ui.extension.compatDrawable
 import com.github.daniellfalcao.common_ui.ui.binding.withBinding
@@ -20,27 +21,34 @@ class PreSignFragment : ParrotFragment<FragmentPreSignBinding>() {
         binding = FragmentPreSignBinding.inflate(inflater, container, false)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) = withBinding {
-        logo.apply {
-            val drawable = context.compatDrawable(
-                com.github.daniellfalcao.common_ui.R.drawable.img_parrot
-            ) as? AnimationDrawable?
-            setImageDrawable(drawable)
-            drawable?.start()
-        }
-        signInButton.apply {
-            setOnClickListener {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        withBinding {
+            logo.apply {
+                val drawable = context.compatDrawable(
+                    com.github.daniellfalcao.common_ui.R.drawable.img_parrot
+                ) as? AnimationDrawable?
+                setImageDrawable(drawable)
+                drawable?.start()
             }
-        }
-        signUpButton.apply {
-            setOnClickListener {
-
+            signInButton.apply {
+                setOnClickListener {
+                    findNavController().navigate(com.github.daniellfalcao.darkblueparrot.R.id.action_preSignFragment_to_signInFragment)
+                }
             }
-            text = SpannableStringBuilder().apply {
-                append(getString(R.string.no_account))
-                color(requireContext().compatColor(com.github.daniellfalcao.darkblueparrot.R.color.primary)) {
-                    append(" " + getString(R.string.sign_up))
+            signUpButton.apply {
+                setOnClickListener {
+                    findNavController().navigate(com.github.daniellfalcao.darkblueparrot.R.id.action_preSignFragment_to_signUpFragment)
+                }
+                text = SpannableStringBuilder().apply {
+                    append(getString(R.string.no_account))
+                    color(requireContext().compatColor(com.github.daniellfalcao.darkblueparrot.R.color.primary)) {
+                        append(" " + getString(R.string.sign_up))
+                    }
                 }
             }
         }
