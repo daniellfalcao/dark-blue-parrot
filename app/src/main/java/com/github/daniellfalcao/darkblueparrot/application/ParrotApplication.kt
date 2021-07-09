@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.darkblueparrot
+package com.github.daniellfalcao.darkblueparrot.application
 
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import timber.log.Timber

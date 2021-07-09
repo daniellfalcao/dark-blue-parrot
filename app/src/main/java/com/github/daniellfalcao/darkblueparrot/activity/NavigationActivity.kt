@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.darkblueparrot
+package com.github.daniellfalcao.darkblueparrot.activity
 
 import android.os.Bundle
 import android.view.LayoutInflater

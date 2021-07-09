@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.authentication.fragment
+package com.github.daniellfalcao.authentication.widget
 
 import android.content.Context
 import android.util.AttributeSet
