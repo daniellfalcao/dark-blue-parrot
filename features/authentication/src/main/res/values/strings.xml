@@ -7,5 +7,12 @@
 
     <string name="hint_username">Username</string>
     <string name="hint_password">Password</string>
+    <string name="hint_birthday">Birthday</string>
+
+    <string name="register_info_helper">We will need some information to complete your register!</string>
+
+    <string name="label_parrot_selector">Swipe for choose your parrot</string>
+
+    <string name="register_done">Done</string>
 
 </resources>

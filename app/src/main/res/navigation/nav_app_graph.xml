@@ -7,25 +7,40 @@
     <fragment
         android:id="@+id/preSignFragment"
         android:name="com.github.daniellfalcao.authentication.fragment.PreSignFragment"
-        app:moduleName="authentication" >
+        app:moduleName="authentication">
         <action
             android:id="@+id/action_preSignFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
         <action
             android:id="@+id/action_preSignFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/signUpFragment"
+            app:enterAnim="@anim/nav_default_pop_enter_anim"
+            app:exitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.github.daniellfalcao.authentication.fragment.SignInFragment"
-        app:moduleName="authentication" />
+        app:moduleName="authentication">
+        <argument
+            android:name="username"
+            android:defaultValue=""
+            app:argType="string" />
+        <argument
+            android:name="password"
+            android:defaultValue=""
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/signUpFragment"
         android:name="com.github.daniellfalcao.authentication.fragment.SignUpFragment"
-        app:moduleName="authentication" >
+        app:moduleName="authentication">
         <action
             android:id="@+id/action_signUpFragment_to_signInFragment"
-            app:destination="@id/signInFragment" />
+            app:destination="@id/signInFragment"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
 
 </navigation>

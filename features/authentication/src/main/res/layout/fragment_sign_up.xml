@@ -1,16 +1,183 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
         app:titleTextColor="@color/white" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="?attr/actionBarSize"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/info"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/keyline_3"
+                android:paddingStart="@dimen/keyline_4"
+                android:paddingEnd="@dimen/keyline_4"
+                android:text="@string/register_info_helper"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceHeadline6"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/label_parrot_selector"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/keyline_3"
+                android:paddingStart="@dimen/keyline_3"
+                android:paddingEnd="@dimen/keyline_3"
+                android:text="@string/label_parrot_selector"
+                android:textAlignment="center"
+                android:textAppearance="?attr/textAppearanceSubtitle1"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/info" />
+
+            <com.github.daniellfalcao.authentication.fragment.ParrotSelectorList
+                android:id="@+id/parrot_selector"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/parrot_list_height"
+                android:layout_marginTop="@dimen/keyline_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/label_parrot_selector" />
+
+            <FrameLayout
+                android:id="@+id/left_shadow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/gradient_parrot_selector"
+                android:scaleX="-1"
+                app:layout_constraintBottom_toBottomOf="@+id/parrot_selector"
+                app:layout_constraintEnd_toStartOf="@+id/parrot_selector_indicator"
+                app:layout_constraintHorizontal_bias="0.58"
+                app:layout_constraintStart_toStartOf="@+id/parrot_selector"
+                app:layout_constraintTop_toTopOf="@+id/parrot_selector" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/parrot_selector_indicator"
+                android:layout_width="@dimen/parrot_list_item_size"
+                android:layout_height="0dp"
+                app:cardBackgroundColor="@color/invisible"
+                app:cardCornerRadius="@dimen/keyline_4"
+                app:cardElevation="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/parrot_selector"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/parrot_selector"
+                app:strokeColor="@color/stroke_secondary_color"
+                app:strokeWidth="@dimen/keyline_1" />
+
+            <FrameLayout
+                android:id="@+id/right_shadow"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/gradient_parrot_selector"
+                app:layout_constraintBottom_toBottomOf="@+id/parrot_selector"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/parrot_selector_indicator"
+                app:layout_constraintTop_toTopOf="@+id/parrot_selector" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/username_field"
+                style="@style/Widget.Parrot.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/keyline_3"
+                android:layout_marginTop="@dimen/keyline_5"
+                android:layout_marginEnd="@dimen/keyline_3"
+                android:hint="@string/hint_username"
+                android:paddingBottom="@dimen/keyline_3"
+                app:layout_constraintBottom_toTopOf="@+id/password_field"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/parrot_selector">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/password_field"
+                style="@style/Widget.Parrot.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/keyline_3"
+                android:layout_marginEnd="@dimen/keyline_3"
+                android:hint="@string/hint_password"
+                android:paddingBottom="@dimen/keyline_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/username_field"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPassword"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/birthday_field"
+                style="@style/Widget.Parrot.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/keyline_3"
+                android:layout_marginEnd="@dimen/keyline_3"
+                android:hint="@string/hint_birthday"
+                android:paddingBottom="@dimen/keyline_3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/password_field">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="date"
+                    android:maxLines="1" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/done_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/keyline_4"
+                android:paddingStart="@dimen/keyline_6"
+                android:paddingEnd="@dimen/keyline_6"
+                android:text="@string/register_done"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/birthday_field"
+                app:layout_constraintVertical_bias="0.0" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</FrameLayout>

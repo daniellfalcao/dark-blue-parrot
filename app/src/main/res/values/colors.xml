@@ -23,4 +23,7 @@
     <color name="on_surface">#FFFFFF</color>
     <color name="background">#001321</color>
     <color name="error">#FE5132</color>
+    <!-- Components colors -->
+    <color name="stroke_primary_color">#00A2F4</color>
+    <color name="stroke_secondary_color">#002E48</color>
 </resources>
