@@ -16,6 +16,7 @@ object Modules {
         const val testProjectName = "test"
         const val commonUIProject = ":infrastructure:common-ui"
         const val commonUIProjectName = "common-ui"
+        const val protoStubProject = ":infrastructure:proto-stub"
     }
 
     object Feature {

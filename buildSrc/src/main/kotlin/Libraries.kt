@@ -76,6 +76,23 @@ object Libraries {
         }
     }
 
+    // TODO: releases
+    object Proto {
+
+        object GRPC {
+            const val protobufLite = "io.grpc:grpc-protobuf-lite:1.37.0"
+            const val kotlinStub = "io.grpc:grpc-kotlin-stub:1.1.0"
+            const val genJava = "io.grpc:protoc-gen-grpc-java:1.37.0"
+            const val genKotlin = "io.grpc:protoc-gen-grpc-kotlin:1.1.0:jdk7@jar"
+        }
+
+        object Google {
+            private const val version = "3.15.8"
+            const val protobufJavaLite = "com.google.protobuf:protobuf-javalite:$version"
+            const val protoc = "com.google.protobuf:protoc:$version"
+        }
+    }
+
     object DI {
         // releases (https://github.com/InsertKoinIO/koin/releases)
         private const val version = "3.1.2"
