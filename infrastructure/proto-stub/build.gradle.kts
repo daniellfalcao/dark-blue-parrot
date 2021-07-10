@@ -23,9 +23,10 @@ dependencies {
     // modules dependencies
     implementation(project(Modules.Infrastructure.commonProject))
     // libraries dependencies
-    implementation(Libraries.Proto.GRPC.protobufLite)
-    implementation(Libraries.Proto.GRPC.kotlinStub)
-    implementation(Libraries.Proto.Google.protobufJavaLite)
+    api(Libraries.Proto.GRPC.protobufLite)
+    api(Libraries.Proto.GRPC.kotlinStub)
+    api(Libraries.Proto.Google.protobufJavaLite)
+    runtimeOnly(Libraries.Proto.GRPC.okHttp)
 }
 
 protobuf {
@@ -60,5 +61,3 @@ protobuf {
         }
     }
 }
-
-tasks["build"].dependsOn("${Modules.Infrastructure.protoStubProject}:generateReleaseProto")

@@ -84,6 +84,7 @@ object Libraries {
             const val kotlinStub = "io.grpc:grpc-kotlin-stub:1.1.0"
             const val genJava = "io.grpc:protoc-gen-grpc-java:1.37.0"
             const val genKotlin = "io.grpc:protoc-gen-grpc-kotlin:1.1.0:jdk7@jar"
+            const val okHttp = "io.grpc:grpc-okhttp:1.37.0"
         }
 
         object Google {
