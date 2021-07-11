@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package user;
+
+option java_package = "com.proto.parrot.service.user";
+option java_multiple_files = true;
+
+message User {
+  string id = 1;
+  string username = 2;
+  string birthday = 3;
+  string parrot = 4;
+}
+
+message ProfileRequest {
+  string id = 1;
+}
+
+message ProfileResponse {
+  User user = 1;
+}
+
+service UserService {
+  rpc Profile(ProfileRequest) returns (stream ProfileResponse) {};
+}

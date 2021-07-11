@@ -5,6 +5,7 @@ plugins {
 dependencies {
     // modules dependencies
     implementation(project(Modules.Infrastructure.commonProject))
+    implementation(project(Modules.Infrastructure.domainProject))
     // libraries dependencies
     api(Libraries.AndroidX.Lifecycle.self)
     api(Libraries.AndroidX.Lifecycle.runtime)

@@ -6,11 +6,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.github.daniellfalcao.common_ui.extension.compatDrawable
-import com.github.daniellfalcao.common_ui.model.Parrot
+import com.github.daniellfalcao.common_ui.extension.toDrawable
 import com.github.daniellfalcao.common_ui.widget.recyclerview.ParrotRecyclerView
 import com.github.daniellfalcao.darkblueparrot.authentication.R
 import com.github.daniellfalcao.darkblueparrot.authentication.databinding.VhParrotBinding
+import com.github.daniellfalcao.domain.user.model.entity.UserEntity.Parrot
 import timber.log.Timber
 
 class ParrotSelectorList @JvmOverloads constructor(
@@ -75,7 +75,7 @@ class ParrotSelectorList @JvmOverloads constructor(
     ) : ParrotRecyclerView.ViewHolder<Parrot, VhParrotBinding>(binding) {
 
         override fun bind(data: Parrot) = withBinding {
-            parrot.setImageDrawable(context.compatDrawable(data.drawableRes))
+            parrot.setImageDrawable(data.toDrawable(context))
         }
 
         companion object {
