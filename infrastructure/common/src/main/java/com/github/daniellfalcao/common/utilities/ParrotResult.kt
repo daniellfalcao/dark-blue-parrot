@@ -108,8 +108,15 @@ class ParrotResult<out T> @PublishedApi internal constructor(
  *
  */
 @PublishedApi
-internal fun createFailure(exception: Throwable): Any =
-    ParrotResult.Failure(exception.toParrotException())
+internal fun createFailure(exception: Throwable): Any {
+    val error: ParrotException = if (exception is ParrotException) {
+        exception
+    } else {
+        exception.toParrotException()
+    }
+    return ParrotResult.Failure(error)
+}
+
 
 
 /**

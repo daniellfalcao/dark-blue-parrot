@@ -19,9 +19,10 @@ object Libraries {
 
     object AndroidX {
 
+        // releases (https://maven.google.com/web/index.html#androidx.core:core-ktx)
+        const val core = "androidx.core:core-ktx:1.6.0"
+
         object View {
-            // releases (https://maven.google.com/web/index.html#androidx.core:core-ktx)
-            const val core = "androidx.core:core-ktx:1.6.0"
             // releases (https://maven.google.com/web/index.html#androidx.activity:activity-ktx)
             const val activity = "androidx.activity:activity-ktx:1.2.3"
             // releases (https://maven.google.com/web/index.html#androidx.fragment:fragment-ktx)
@@ -51,6 +52,14 @@ object Libraries {
             const val dynamicFeatureFragment = "androidx.navigation:navigation-dynamic-features-fragment:$version"
         }
 
+        object Room {
+            // releases (https://maven.google.com/web/index.html#androidx.room)
+            internal const val version = "2.3.0"
+            const val runtime = "androidx.room:room-runtime:$version"
+            const val compiler = "androidx.room:room-compiler:$version"
+            const val ktx = "androidx.room:room-ktx:$version"
+        }
+
         object Test {
             // releases (https://maven.google.com/web/index.html#androidx.test:runner)
             const val runner = "androidx.test:runner:1.4.0"
@@ -60,6 +69,8 @@ object Libraries {
             const val core = "androidx.test:core-ktx:1.4.0"
             // releases (https://maven.google.com/web/index.html#androidx.arch.core:core-testing)
             const val coreTesting = "androidx.arch.core:core-testing:2.1.0"
+            // releases (https://maven.google.com/web/index.html#androidx.room:room-testing)
+            const val roomTesting = "androidx.room:room-testing:${Room.version}"
         }
     }
 
@@ -116,8 +127,11 @@ object Libraries {
 
         object Mockito {
             // releases (https://mvnrepository.com/artifact/org.mockito/mockito-core)
-            const val core = "org.mockito:mockito-core:3.1.0"
-            const val kotlin = "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+            const val core = "org.mockito:mockito-core:3.11.2"
+            // releases (https://mvnrepository.com/artifact/org.mockito/mockito-inline)
+            const val inline = "org.mockito:mockito-inline:3.11.2"
+            // releases (https://github.com/mockito/mockito-kotlin/releases)
+            const val kotlin = "org.mockito.kotlin:mockito-kotlin:3.2.0"
         }
 
         object JUnit {

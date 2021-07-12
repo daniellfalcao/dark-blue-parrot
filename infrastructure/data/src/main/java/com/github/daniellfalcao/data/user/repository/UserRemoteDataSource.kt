@@ -1,10 +1,10 @@
-package com.github.daniellfalcao.data.user
+package com.github.daniellfalcao.data.user.repository
 
 import com.github.daniellfalcao.common.utilities.ParrotResult
 import com.github.daniellfalcao.common.utilities.mapCatching
 import com.github.daniellfalcao.data._module.extension.executeFlowRequest
 import com.github.daniellfalcao.data._module.extension.executeRequest
-import com.github.daniellfalcao.domain.user.model.dto.UsernameAvailabilityResult
+import com.github.daniellfalcao.domain.user.model.UsernameAvailabilityDTO
 import com.google.protobuf.Empty
 import com.proto.parrot.service.authentication.AuthenticationServiceGrpcKt
 import com.proto.parrot.service.authentication.CheckUsernameAvailabilityRequest
@@ -12,7 +12,6 @@ import com.proto.parrot.service.authentication.RegisterServiceGrpcKt
 import com.proto.parrot.service.authentication.SignInRequest
 import com.proto.parrot.service.authentication.SignInResponse
 import com.proto.parrot.service.authentication.SignUpRequest
-import com.proto.parrot.service.user.ProfileRequest
 import com.proto.parrot.service.user.User
 import com.proto.parrot.service.user.UserServiceGrpcKt
 import kotlinx.coroutines.flow.Flow
@@ -24,23 +23,20 @@ class UserRemoteDataSource(
     private val authenticationService: AuthenticationServiceGrpcKt.AuthenticationServiceCoroutineStub
 ) {
 
-    suspend fun requestUsernameAvailability(username: String): ParrotResult<UsernameAvailabilityResult> {
+    suspend fun requestUsernameAvailability(username: String): ParrotResult<UsernameAvailabilityDTO> {
         val request = CheckUsernameAvailabilityRequest.newBuilder()
             .setUsername(username)
             .build()
         return registerService.executeRequest {
             checkUsernameAvailability(request)
         }.mapCatching {
-            UsernameAvailabilityResult(it.isAvailable)
+            UsernameAvailabilityDTO(it.isAvailable)
         }
     }
 
-    suspend fun requestProfile(id: String): Flow<User> {
-        val request = ProfileRequest.newBuilder()
-            .setId(id)
-            .build()
+    suspend fun requestProfile(): Flow<User> {
         return userService.executeFlowRequest {
-            profile(request)
+            profile(Empty.getDefaultInstance())
         }.map {
             it.user
         }

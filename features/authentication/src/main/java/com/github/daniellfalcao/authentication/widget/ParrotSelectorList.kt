@@ -10,7 +10,7 @@ import com.github.daniellfalcao.common_ui.extension.toDrawable
 import com.github.daniellfalcao.common_ui.widget.recyclerview.ParrotRecyclerView
 import com.github.daniellfalcao.darkblueparrot.authentication.R
 import com.github.daniellfalcao.darkblueparrot.authentication.databinding.VhParrotBinding
-import com.github.daniellfalcao.domain.user.model.entity.UserEntity.Parrot
+import com.github.daniellfalcao.domain.user.model.UserDTO.Parrot
 import timber.log.Timber
 
 class ParrotSelectorList @JvmOverloads constructor(

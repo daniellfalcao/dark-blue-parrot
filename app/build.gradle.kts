@@ -3,6 +3,7 @@ plugins {
     id("kotlin-android")
     id("org.jetbrains.kotlin.plugin.parcelize")
     id("androidx.navigation.safeargs.kotlin")
+    kotlin("kapt")
 }
 
 android {
@@ -49,4 +50,6 @@ dependencies {
     implementation(project(Modules.Infrastructure.commonUIProject))
     implementation(project(Modules.Infrastructure.domainProject))
     implementation(project(Modules.Infrastructure.dataProject))
+    // libraries dependencies
+    kapt(Libraries.AndroidX.Room.compiler)
 }

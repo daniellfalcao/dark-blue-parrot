@@ -1,5 +1,14 @@
 plugins {
     id("library")
+    kotlin("kapt")
+}
+android {
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
 }
 
 dependencies {
@@ -12,8 +21,12 @@ dependencies {
     testImplementation(Libraries.AndroidX.Test.core)
     testImplementation(Libraries.AndroidX.Test.junit)
     testImplementation(Libraries.AndroidX.Test.coreTesting)
+    testImplementation(Libraries.AndroidX.Test.roomTesting)
     testImplementation(Libraries.DI.Test.koinKotlin)
     testImplementation(Libraries.DI.Test.koinJUnit)
     testImplementation(Libraries.Test.JUnit.self)
     testImplementation(Libraries.Test.Robolectric.self)
+    testImplementation(Libraries.Test.Mockito.core)
+    testImplementation(Libraries.Test.Mockito.inline)
+    testImplementation(Libraries.Test.Mockito.kotlin)
 }

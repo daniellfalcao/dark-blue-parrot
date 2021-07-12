@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="parrot_preferences_key">parrot_preferences</string>
+</resources>

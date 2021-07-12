@@ -10,7 +10,6 @@ dependencies {
     api(Libraries.AndroidX.Lifecycle.self)
     api(Libraries.AndroidX.Lifecycle.runtime)
     api(Libraries.AndroidX.Lifecycle.common)
-    api(Libraries.AndroidX.View.core)
     api(Libraries.AndroidX.View.activity)
     api(Libraries.AndroidX.View.fragment)
     api(Libraries.AndroidX.View.appCompat)

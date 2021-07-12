@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package user;
 
+import "google/protobuf/empty.proto";
+
 option java_package = "com.proto.parrot.service.user";
 option java_multiple_files = true;
 
@@ -10,10 +12,8 @@ message User {
   string username = 2;
   string birthday = 3;
   string parrot = 4;
-}
-
-message ProfileRequest {
-  string id = 1;
+  uint64 likes = 5;
+  uint64 bookmarks = 6;
 }
 
 message ProfileResponse {
@@ -21,5 +21,5 @@ message ProfileResponse {
 }
 
 service UserService {
-  rpc Profile(ProfileRequest) returns (stream ProfileResponse) {};
+  rpc Profile(google.protobuf.Empty) returns (stream ProfileResponse) {};
 }

@@ -8,7 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.github.daniellfalcao.common_ui.ui.binding.withBinding
 import com.github.daniellfalcao.common_ui.ui.fragment.ParrotFragment
 import com.github.daniellfalcao.darkblueparrot.authentication.databinding.FragmentSignUpBinding
-import com.github.daniellfalcao.domain.user.model.entity.UserEntity.Parrot
+import com.github.daniellfalcao.domain.user.model.UserDTO.Parrot
 
 class SignUpFragment : ParrotFragment<FragmentSignUpBinding>() {
 
