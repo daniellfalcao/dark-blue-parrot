@@ -17,6 +17,7 @@ dependencies {
     implementation(project(Modules.Infrastructure.domainProject))
     implementation(project(Modules.Infrastructure.dataProject))
     // test libraries dependencies
+    testImplementation(Libraries.Kotlin.Reflect.self)
     testImplementation(Libraries.AndroidX.Test.runner)
     testImplementation(Libraries.AndroidX.Test.core)
     testImplementation(Libraries.AndroidX.Test.junit)

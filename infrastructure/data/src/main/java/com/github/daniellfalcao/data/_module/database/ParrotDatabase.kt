@@ -38,7 +38,6 @@ abstract class ParrotDatabase : RoomDatabase() {
             db?.runInTransaction { db?.clearAllTables() }
         }
 
-
         private fun buildDatabase(context: Context): ParrotDatabase {
             return Room.databaseBuilder(context, ParrotDatabase::class.java, DATABASE_NAME)
                 .fallbackToDestructiveMigration()

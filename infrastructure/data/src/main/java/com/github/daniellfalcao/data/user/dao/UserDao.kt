@@ -14,6 +14,6 @@ abstract class UserDao : BaseDao<UserEntity>() {
     abstract suspend fun user(): UserEntity?
 
     @Query("SELECT * FROM user")
-    abstract fun flowProfile(): Flow<ProfileView>
+    abstract fun flowProfile(): Flow<ProfileView?>
 
 }

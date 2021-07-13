@@ -9,11 +9,13 @@ import com.github.daniellfalcao.domain.user.model.UserDTO
 import com.github.daniellfalcao.domain.user.model.UsernameAvailabilityDTO
 import com.github.daniellfalcao.domain.user.repository.UserRepository
 import com.proto.parrot.service.user.User
+import kotlinx.coroutines.cancel
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
-import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.util.Date
@@ -53,7 +55,8 @@ class UserRepositoryImpl(
     }
 
     override suspend fun signOut(): ParrotResult<Any> {
-        return remote.requestSignOut().onSuccess {
+        return remote.requestSignOut().also {
+            local.deleteToken()
             ParrotDatabase.dropDatabase()
         }
     }
@@ -64,18 +67,24 @@ class UserRepositoryImpl(
 
     override suspend fun updateProfileAsStream() {
         val pendingUpdates = mutableListOf<User>()
+        val defaultDelay = 500L
         coroutineScope {
             launch {
                 while (isActive) {
-                    delay(500)
+                    delay(defaultDelay)
                     if (pendingUpdates.isNotEmpty()) {
                         local.saveUser(pendingUpdates.removeFirst())
                     }
                 }
             }
-            remote.requestProfile().onEach { pendingUpdates.add(it) }
+            remote.requestProfile().catch { error ->
+                while (pendingUpdates.isNotEmpty()) { delay(defaultDelay) }
+                //TODO: log error to crashlytics
+                cancel()
+            }.collect {
+                pendingUpdates.add(it)
+            }
         }
-
     }
 
 }

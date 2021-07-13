@@ -5,6 +5,7 @@ import com.github.daniellfalcao.data.user.dao.UserDao
 import com.github.daniellfalcao.data.user.model.entity.toEntity
 import com.proto.parrot.service.user.User
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.filterNotNull
 
 class UserLocalDataSource(
     private val userDao: UserDao,
@@ -28,6 +29,6 @@ class UserLocalDataSource(
         tokenDao.deleteToken()
     }
 
-    fun flowProfile() = userDao.flowProfile().distinctUntilChanged()
+    fun flowProfile() = userDao.flowProfile().filterNotNull().distinctUntilChanged()
 
 }

@@ -2,6 +2,11 @@ object Libraries {
 
     object Kotlin {
 
+        object Reflect {
+            // releases (https://mvnrepository.com/artifact/org.jetbrains.kotlin/kotlin-reflect)
+            const val self = "org.jetbrains.kotlin:kotlin-reflect:1.5.20"
+        }
+
         object Coroutines {
             private const val version = "1.5.0"
             // releases (https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core)

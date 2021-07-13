@@ -11,11 +11,15 @@ import com.proto.parrot.service.authentication.AuthenticationServiceGrpcKt
 import com.proto.parrot.service.authentication.RegisterServiceGrpcKt
 import com.proto.parrot.service.post.PostServiceGrpcKt
 import com.proto.parrot.service.user.UserServiceGrpcKt
+import org.junit.After
 import org.junit.Rule
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import org.koin.test.KoinTestRule
+import org.koin.test.get
 import java.util.concurrent.Executors
+import kotlin.reflect.KMutableProperty
+import kotlin.reflect.jvm.isAccessible
 
 abstract class RepositoryTest : BaseKoinTest() {
 
@@ -46,7 +50,7 @@ abstract class RepositoryTest : BaseKoinTest() {
                         .setTransactionExecutor(Executors.newSingleThreadExecutor())
                         .allowMainThreadQueries()
                         .fallbackToDestructiveMigration()
-                        .build()
+                        .build().also { setDatabaseInstance(it) }
                 }
 
                 // DAO's
@@ -57,6 +61,20 @@ abstract class RepositoryTest : BaseKoinTest() {
                 single { UserLocalDataSource(get(), get()) }
             }
         )
+    }
+
+    @After
+    fun closeDatabase() {
+        get<ParrotDatabase>().close()
+        setDatabaseInstance(null)
+    }
+
+    private fun setDatabaseInstance(instance: ParrotDatabase?) {
+        (ParrotDatabase::class.nestedClasses.toMutableList()[0].members.toMutableList()[1] as KMutableProperty)
+            .apply {
+                isAccessible = true
+                setter.call(ParrotDatabase::class, instance)
+            }
     }
 
 }
