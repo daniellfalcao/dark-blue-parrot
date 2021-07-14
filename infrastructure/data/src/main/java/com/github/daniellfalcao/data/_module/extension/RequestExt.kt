@@ -1,7 +1,7 @@
 package com.github.daniellfalcao.data._module.extension
 
-import com.github.daniellfalcao.common.ParrotException
-import com.github.daniellfalcao.common.toParrotException
+import com.github.daniellfalcao.common.exception.ParrotException
+import com.github.daniellfalcao.common.exception.toParrotException
 import com.github.daniellfalcao.common.utilities.ParrotResult
 import io.grpc.kotlin.AbstractCoroutineStub
 import kotlinx.coroutines.flow.Flow

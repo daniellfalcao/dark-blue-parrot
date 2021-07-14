@@ -1,7 +1,7 @@
 package com.github.daniellfalcao.test.data.user
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.daniellfalcao.common.ParrotException
+import com.github.daniellfalcao.common.exception.ParrotException
 import com.github.daniellfalcao.data.user.repository.UserRemoteDataSource
 import com.github.daniellfalcao.domain.user.model.UserDTO
 import com.github.daniellfalcao.test._module.RepositoryTest

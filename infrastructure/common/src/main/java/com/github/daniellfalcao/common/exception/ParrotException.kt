@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.common
+package com.github.daniellfalcao.common.exception
 
 
 /** Base exception to be used as default in app. */

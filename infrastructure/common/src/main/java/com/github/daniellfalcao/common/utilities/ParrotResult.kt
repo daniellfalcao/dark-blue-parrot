@@ -2,8 +2,8 @@
 
 package com.github.daniellfalcao.common.utilities
 
-import com.github.daniellfalcao.common.ParrotException
-import com.github.daniellfalcao.common.toParrotException
+import com.github.daniellfalcao.common.exception.ParrotException
+import com.github.daniellfalcao.common.exception.toParrotException
 import kotlin.contracts.ExperimentalContracts
 import kotlin.contracts.InvocationKind
 import kotlin.contracts.contract
