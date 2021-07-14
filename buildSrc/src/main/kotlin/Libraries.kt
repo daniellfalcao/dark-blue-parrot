@@ -45,8 +45,8 @@ object Libraries {
             const val self = "androidx.lifecycle:lifecycle-extensions:2.2.0"
             // releases (https://maven.google.com/web/index.html#androidx.lifecycle:lifecycle-runtime-ktx)
             const val runtime =  "androidx.lifecycle:lifecycle-runtime-ktx:2.3.1"
-            // releases (https://maven.google.com/web/index.html#androidx.lifecycle:lifecycle-common)
-            const val common =  "androidx.lifecycle:lifecycle-common:2.3.1"
+            // releases (https://maven.google.com/web/index.html#androidx.lifecycle:lifecycle-common-java8)
+            const val common =  "androidx.lifecycle:lifecycle-common-java8:2.3.1"
         }
 
         object Navigation {

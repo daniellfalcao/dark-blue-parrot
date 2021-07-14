@@ -2,7 +2,7 @@ package com.github.daniellfalcao.data._module.di
 
 import android.app.Application
 import android.content.Context
-import com.github.daniellfalcao.common.di.DI
+import com.github.daniellfalcao.common.di.KoinModuleDI
 import com.github.daniellfalcao.data.BuildConfig
 import com.github.daniellfalcao.data.R
 import com.github.daniellfalcao.data._module.database.ParrotDatabase
@@ -10,6 +10,7 @@ import com.github.daniellfalcao.data.user.dao.TokenDao
 import com.github.daniellfalcao.data.user.repository.UserLocalDataSource
 import com.github.daniellfalcao.data.user.repository.UserRemoteDataSource
 import com.github.daniellfalcao.data.user.repository.UserRepositoryImpl
+import com.github.daniellfalcao.domain.user.repository.UserRepository
 import com.proto.parrot.service.authentication.AuthenticationServiceGrpcKt
 import com.proto.parrot.service.authentication.RegisterServiceGrpcKt
 import com.proto.parrot.service.post.PostServiceGrpcKt
@@ -20,9 +21,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.asExecutor
 import org.koin.dsl.module
 
-object DataModule : DI {
+object DataModule : KoinModuleDI {
 
-    override fun koinModule() = module {
+    override fun inject() = module {
 
         // shared preferences instance
         single {
@@ -59,7 +60,7 @@ object DataModule : DI {
         // repositories
         single { UserLocalDataSource(get(), get()) }
         single { UserRemoteDataSource(get(), get(), get()) }
-        single { UserRepositoryImpl(get(), get()) }
+        single<UserRepository> { UserRepositoryImpl(get(), get()) }
 
     }
 }

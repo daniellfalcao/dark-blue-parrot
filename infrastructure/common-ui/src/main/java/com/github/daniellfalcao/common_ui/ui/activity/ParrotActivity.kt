@@ -23,3 +23,12 @@ abstract class ParrotActivity<VB : ViewBinding> : AppCompatActivity(), Binding<V
     }
 
 }
+
+/**
+ * Retrieve the extra from activity contained in the [key]. If don't have a value (null) to key,
+ * returns a default value.
+ *
+ * */
+inline fun <reified T : Any> ParrotActivity<*>.extra(key: String, default: T) = lazy {
+    intent.extras?.get(key) as? T ?: default
+}
