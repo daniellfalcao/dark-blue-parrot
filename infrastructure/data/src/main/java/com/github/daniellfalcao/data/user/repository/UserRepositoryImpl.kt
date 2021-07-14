@@ -7,6 +7,8 @@ import com.github.daniellfalcao.data.user.model.entity.toDTO
 import com.github.daniellfalcao.domain.user.model.UserDTO
 import com.github.daniellfalcao.domain.user.model.UsernameAvailabilityDTO
 import com.github.daniellfalcao.domain.user.repository.UserRepository
+import com.github.daniellfalcao.domain.user.repository.UserRepository.Companion.PASSWORD_LENGTH
+import com.github.daniellfalcao.domain.user.repository.UserRepository.Companion.USERNAME_MIN_LENGTH
 import com.proto.parrot.service.user.User
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
@@ -24,6 +26,31 @@ class UserRepositoryImpl(
     private val local: UserLocalDataSource,
     private val remote: UserRemoteDataSource
 ) : UserRepository {
+
+    override fun isUsernameValid(username: String): Boolean {
+        var isValid = true
+        if (username.length != USERNAME_MIN_LENGTH ||
+            "[^A-Za-z]".toRegex().find(username) != null
+        ) {
+            isValid = false
+        }
+        return isValid
+    }
+
+    override fun isPasswordValid(password: String): Boolean {
+        var isValid = true
+        // check password requirements for length and start character
+        if (password.length != PASSWORD_LENGTH || password.startsWith("0")) {
+            isValid = false
+        }
+        // check if password is composed only by numbers
+        try {
+            password.toDouble()
+        } catch (e: NumberFormatException) {
+            isValid = false
+        }
+        return isValid
+    }
 
     override suspend fun checkUsernameAvailability(
         username: String

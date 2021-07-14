@@ -9,6 +9,10 @@ import java.util.Date
 
 interface UserRepository {
 
+    // validations
+    fun isUsernameValid(username: String): Boolean
+    fun isPasswordValid(password: String): Boolean
+
     // register
     suspend fun checkUsernameAvailability(username: String): ParrotResult<UsernameAvailabilityDTO>
     suspend fun signUp(username: String, password: String, birthday: Date, parrot: UserDTO.Parrot): ParrotResult<Any>
@@ -21,5 +25,11 @@ interface UserRepository {
     // profile
     fun flowUser(): Flow<UserDTO>
     suspend fun updateUserAsStream(): Job
+
+    companion object {
+        const val USERNAME_MIN_LENGTH = 3
+        const val PASSWORD_LENGTH = 8
+    }
+
 
 }
