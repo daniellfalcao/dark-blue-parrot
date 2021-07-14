@@ -1,15 +1,16 @@
 package com.github.daniellfalcao.test.data.user
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.github.daniellfalcao.data.user.model.view.ProfileView
+import com.github.daniellfalcao.data.user.model.entity.UserEntity
+import com.github.daniellfalcao.data.user.model.entity.toEntity
 import com.github.daniellfalcao.data.user.repository.UserLocalDataSource
 import com.github.daniellfalcao.domain.user.model.UserDTO
 import com.github.daniellfalcao.test._module.RepositoryTest
 import com.github.daniellfalcao.test._module.mock.user1
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.take
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -64,24 +65,19 @@ class UserLocalDataSourceTest : RepositoryTest() {
         // given
         val user1update1 = user1.build()
         val user1update2 = user1.setLikes(2).build()
+        val user1update3 = user1.setLikes(3).build()
         // when
-        var lastCollectedValue: ProfileView? = null
+        var result: UserEntity? = null
         val flowProfile = launch {
-            userLocalDataSource.flowProfile()
-                .take(2)
-                .collect {
-                    lastCollectedValue = it
-                }
+            withTimeout(1000) {
+                userLocalDataSource.flowUser().collect { result = it }
+            }
         }
         userLocalDataSource.saveUser(user1update1)
         userLocalDataSource.saveUser(user1update2)
+        userLocalDataSource.saveUser(user1update3)
         flowProfile.join()
         // then
-        Assert.assertTrue(lastCollectedValue!!.user!!.id == user1update2.id)
-        Assert.assertTrue(lastCollectedValue!!.user!!.username == user1update2.username)
-        Assert.assertTrue(lastCollectedValue!!.user!!.parrot.name == user1update2.parrot)
-        Assert.assertTrue(lastCollectedValue!!.user!!.likes == user1update2.likes)
-        Assert.assertTrue(lastCollectedValue!!.user!!.bookmarks == user1update2.bookmarks)
-        Assert.assertTrue(lastCollectedValue!!.user!!.birthday!!.time == UserDTO.birthdayDateFormat.parse(user1update2.birthday)!!.time)
+        Assert.assertTrue(result == user1update3.toEntity())
     }
 }

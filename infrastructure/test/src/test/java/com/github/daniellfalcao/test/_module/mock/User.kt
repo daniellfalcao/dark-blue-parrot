@@ -18,5 +18,5 @@ val user2: User.Builder
         .setUsername("leinad")
         .setBirthday("20/02/1950")
         .setParrot(UserDTO.Parrot.YELLOW.name)
-        .setLikes(6)
-        .setBookmarks(10)
+        .setLikes(0)
+        .setBookmarks(0)

@@ -16,7 +16,10 @@ class UserLocalDataSource(
 
     suspend fun saveUser(user: User) {
         val entity = user.toEntity()
-        userDao.insertOrUpdate(entity)
+        userDao.runInTransaction {
+            userDao.deleteUserDifferentThan(entity.id)
+            userDao.insertOrUpdate(entity)
+        }
     }
 
     suspend fun token() = tokenDao.token()
@@ -29,6 +32,6 @@ class UserLocalDataSource(
         tokenDao.deleteToken()
     }
 
-    fun flowProfile() = userDao.flowProfile().filterNotNull().distinctUntilChanged()
+    fun flowUser() = userDao.flowUser().filterNotNull().distinctUntilChanged()
 
 }

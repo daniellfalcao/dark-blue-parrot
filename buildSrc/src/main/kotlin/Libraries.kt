@@ -8,7 +8,7 @@ object Libraries {
         }
 
         object Coroutines {
-            private const val version = "1.5.0"
+            private const val version = "1.5.1"
             // releases (https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core)
             const val core = "org.jetbrains.kotlinx:kotlinx-coroutines-core:$version"
             // releases (https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-android)
@@ -16,7 +16,7 @@ object Libraries {
 
             object Test {
                 // releases (https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-test)
-                const val android = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
+                const val self = "org.jetbrains.kotlinx:kotlinx-coroutines-test:$version"
             }
 
         }

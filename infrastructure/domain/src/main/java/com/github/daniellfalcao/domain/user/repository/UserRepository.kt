@@ -1,9 +1,9 @@
 package com.github.daniellfalcao.domain.user.repository
 
 import com.github.daniellfalcao.common.utilities.ParrotResult
-import com.github.daniellfalcao.domain.user.model.ProfileDTO
 import com.github.daniellfalcao.domain.user.model.UserDTO
 import com.github.daniellfalcao.domain.user.model.UsernameAvailabilityDTO
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.Flow
 import java.util.Date
 
@@ -19,7 +19,7 @@ interface UserRepository {
     suspend fun signOut(): ParrotResult<Any>
 
     // profile
-    suspend fun flowProfile(): Flow<ProfileDTO>
-    suspend fun updateProfileAsStream()
+    fun flowUser(): Flow<UserDTO>
+    suspend fun updateUserAsStream(): Job
 
 }

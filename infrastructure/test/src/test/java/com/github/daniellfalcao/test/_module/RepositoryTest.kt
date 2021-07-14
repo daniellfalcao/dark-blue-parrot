@@ -24,7 +24,7 @@ import kotlin.reflect.jvm.isAccessible
 abstract class RepositoryTest : BaseKoinTest() {
 
     @get:Rule
-    val rule = InstantTaskExecutorRule()
+    val instantTask = InstantTaskExecutorRule()
 
     @get:Rule
     open val koinTestRule = KoinTestRule.create {

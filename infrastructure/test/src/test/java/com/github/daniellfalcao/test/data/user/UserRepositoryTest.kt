@@ -8,8 +8,9 @@ import com.github.daniellfalcao.data.user.model.entity.toEntity
 import com.github.daniellfalcao.data.user.repository.UserLocalDataSource
 import com.github.daniellfalcao.data.user.repository.UserRemoteDataSource
 import com.github.daniellfalcao.data.user.repository.UserRepositoryImpl
-import com.github.daniellfalcao.domain.user.model.ProfileDTO
 import com.github.daniellfalcao.domain.user.model.UserDTO
+import com.github.daniellfalcao.domain.user.model.UserDTO.Parrot.BLUE
+import com.github.daniellfalcao.domain.user.model.UserDTO.Parrot.YELLOW
 import com.github.daniellfalcao.domain.user.model.UsernameAvailabilityDTO
 import com.github.daniellfalcao.test._module.RepositoryTest
 import com.github.daniellfalcao.test._module.mock.user1
@@ -23,6 +24,7 @@ import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.take
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withTimeout
@@ -93,7 +95,7 @@ class UserRepositoryTest : RepositoryTest() {
         // given
         val remote = mock<UserRemoteDataSource> {
             onBlocking {
-                requestSignUp("test", "123", "15/12/1995", UserDTO.Parrot.BLUE.name)
+                requestSignUp("test", "123", "15/12/1995", BLUE.name)
             } doReturn ParrotResult.success(Empty.getDefaultInstance())
         }
         val repository = buildRepository(remote)
@@ -102,7 +104,7 @@ class UserRepositoryTest : RepositoryTest() {
             "test",
             "123",
             UserDTO.birthdayDateFormat.parse("15/12/1995")!!,
-            UserDTO.Parrot.BLUE
+            BLUE
         )
         // then
         Assert.assertTrue(result.isSuccess)
@@ -113,7 +115,7 @@ class UserRepositoryTest : RepositoryTest() {
         // given
         val remote = mock<UserRemoteDataSource> {
             onBlocking {
-                requestSignUp("test", "123", "15/12/1995", UserDTO.Parrot.BLUE.name)
+                requestSignUp("test", "123", "15/12/1995", BLUE.name)
             } doReturn ParrotResult.failure(StatusRuntimeException(Status.ALREADY_EXISTS).toParrotException())
         }
         val repository = buildRepository(remote)
@@ -122,7 +124,7 @@ class UserRepositoryTest : RepositoryTest() {
             "test",
             "123",
             UserDTO.birthdayDateFormat.parse("15/12/1995")!!,
-            UserDTO.Parrot.BLUE
+            BLUE
         )
         // then
         Assert.assertTrue(result.isFailure)
@@ -302,47 +304,20 @@ class UserRepositoryTest : RepositoryTest() {
         // given
         val user1update1 = user1.build()
         val user1update2 = user1.setLikes(2).build()
-        val user1update3 = user1.setBookmarks(5).build()
+        val user1update3 = user1.setParrot(YELLOW.name).build()
         val local = get<UserLocalDataSource>()
         val repository = buildRepository()
         // when
-        val result = mutableListOf<ProfileDTO>()
-        val flowProfileJob = launch {
-            withTimeout(1000) {
-                repository.flowProfile().take(4).collect { result.add(it) }
-            }
+        var result: UserDTO? = null
+        val flowProfile = launch {
+            withTimeout(1000) { repository.flowUser().collect { result = it } }
         }
         local.saveUser(user1update1)
         local.saveUser(user1update2)
         local.saveUser(user1update3)
-        flowProfileJob.join()
+        flowProfile.join()
         // then
-        Assert.assertTrue(result.size == 3)
-        Assert.assertTrue(result[0].user == user1update1.toEntity().toDTO())
-        Assert.assertTrue(result[1].user == user1update2.toEntity().toDTO())
-        Assert.assertTrue(result[2].user == user1update3.toEntity().toDTO())
-    }
-
-    @Test
-    fun `test update profile with same data and flow only one update`() = runBlocking {
-        // given
-        val user1update1 = user1.build()
-        val local = get<UserLocalDataSource>()
-        val repository = buildRepository()
-        // when
-        val result = mutableListOf<ProfileDTO>()
-        val flowProfileJob = launch {
-            withTimeout(1000) {
-                repository.flowProfile().take(4).collect { result.add(it) }
-            }
-        }
-        local.saveUser(user1update1)
-        local.saveUser(user1update1)
-        local.saveUser(user1update1)
-        flowProfileJob.join()
-        // then
-        Assert.assertTrue(result.size == 1)
-        Assert.assertTrue(result[0].user == user1update1.toEntity().toDTO())
+        Assert.assertTrue(result == user1update3.toEntity().toDTO())
     }
 
     @Test
@@ -362,24 +337,18 @@ class UserRepositoryTest : RepositoryTest() {
         }
         val repository = buildRepository(remote)
         // when
-        val result = mutableListOf<ProfileDTO>()
+        val result = mutableListOf<UserDTO>()
         val flowProfileJob = launch {
-            withTimeout(5000) {
-                repository.flowProfile().take(3).collect { result.add(it) }
-            }
+            repository.flowUser().take(3).toList(result)
         }
-        val updateProfileJob = launch {
-            withTimeout(5000) {
-                repository.updateProfileAsStream()
-            }
-        }
+        val updateProfileJob = repository.updateUserAsStream()
         flowProfileJob.join()
         updateProfileJob.cancelAndJoin()
         // then
         Assert.assertTrue(result.size == 3)
-        Assert.assertTrue(result[0].user == user1update1.toEntity().toDTO())
-        Assert.assertTrue(result[1].user == user1update2.toEntity().toDTO())
-        Assert.assertTrue(result[2].user == user1update3.toEntity().toDTO())
+        Assert.assertTrue(result[0] == user1update1.toEntity().toDTO())
+        Assert.assertTrue(result[1] == user1update2.toEntity().toDTO())
+        Assert.assertTrue(result[2] == user1update3.toEntity().toDTO())
     }
 
     @Test
@@ -401,21 +370,17 @@ class UserRepositoryTest : RepositoryTest() {
         val remote = UserRemoteDataSource(userService, mock(), mock())
         val repository = buildRepository(remote)
         // when
-        val result = mutableListOf<ProfileDTO>()
+        val result = mutableListOf<UserDTO>()
         val flowProfileJob = launch {
-            withTimeout(5000) {
-                repository.flowProfile().take(2).collect { result.add(it) }
-            }
+            repository.flowUser().take(2).toList(result)
         }
-        val updateProfileJob = launch {
-            withTimeout(10000) { repository.updateProfileAsStream() }
-        }
+        val updateProfileJob = repository.updateUserAsStream()
         flowProfileJob.join()
         updateProfileJob.cancelAndJoin()
         // then
         Assert.assertTrue(result.size == 2)
-        Assert.assertTrue(result[0].user == response1.user.toEntity().toDTO())
-        Assert.assertTrue(result[1].user == response2.user.toEntity().toDTO())
+        Assert.assertTrue(result[0] == response1.user.toEntity().toDTO())
+        Assert.assertTrue(result[1] == response2.user.toEntity().toDTO())
     }
 
 }

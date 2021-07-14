@@ -25,6 +25,7 @@ dependencies {
     testImplementation(Libraries.AndroidX.Test.roomTesting)
     testImplementation(Libraries.DI.Test.koinKotlin)
     testImplementation(Libraries.DI.Test.koinJUnit)
+    testImplementation(Libraries.Kotlin.Coroutines.Test.self)
     testImplementation(Libraries.Test.JUnit.self)
     testImplementation(Libraries.Test.Robolectric.self)
     testImplementation(Libraries.Test.Mockito.core)
