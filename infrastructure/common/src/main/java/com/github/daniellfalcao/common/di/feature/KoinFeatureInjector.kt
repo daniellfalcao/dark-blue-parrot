@@ -13,16 +13,7 @@ object KoinFeatureInjector {
     private var isHomeModuleInjected = false
     private var isProfileModuleInjected = false
 
-    private val isFeaturesInjected: Boolean
-        get() {
-            return isAuthenticationModuleInjected &&
-                    isBookmarkModuleInjected &&
-                    isHomeModuleInjected &&
-                    isProfileModuleInjected
-        }
-
     fun attemptInjectModules() {
-        if (isFeaturesInjected) return
         if (!isAuthenticationModuleInjected) {
             withFeature<AuthenticationFeatureDI> {
                 inject()
