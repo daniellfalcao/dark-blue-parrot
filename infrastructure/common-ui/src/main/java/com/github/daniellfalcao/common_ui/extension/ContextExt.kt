@@ -16,3 +16,9 @@ fun Context.compatDrawable(@DrawableRes id: Int) = ContextCompat.getDrawable(thi
  *
  * */
 fun Context.compatColor(@ColorRes id: Int) = ContextCompat.getColor(this, id)
+
+/**
+ * Wrap ContextCompat.getColorStateList call into a extension of Context.
+ *
+ * */
+fun Context.compatColorStateList(@ColorRes id: Int) = ContextCompat.getColorStateList(this, id)

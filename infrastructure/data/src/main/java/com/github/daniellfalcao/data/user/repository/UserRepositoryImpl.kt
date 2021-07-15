@@ -29,9 +29,7 @@ class UserRepositoryImpl(
 
     override fun isUsernameValid(username: String): Boolean {
         var isValid = true
-        if (username.length != USERNAME_MIN_LENGTH ||
-            "[^A-Za-z]".toRegex().find(username) != null
-        ) {
+        if (username.length < USERNAME_MIN_LENGTH || "[^A-Za-z]".toRegex().find(username) != null) {
             isValid = false
         }
         return isValid

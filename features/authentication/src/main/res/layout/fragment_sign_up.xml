@@ -104,7 +104,6 @@
                 android:layout_marginTop="@dimen/keyline_5"
                 android:layout_marginEnd="@dimen/keyline_3"
                 android:hint="@string/hint_username"
-                android:paddingBottom="@dimen/keyline_3"
                 app:layout_constraintBottom_toTopOf="@+id/password_field"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -118,15 +117,29 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:id="@+id/username_progress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/keyline_1"
+                android:layout_marginEnd="@dimen/keyline_3"
+                android:indeterminate="true"
+                android:visibility="gone"
+                app:indicatorSize="@dimen/keyline_4"
+                app:layout_constraintBottom_toBottomOf="@+id/username_field"
+                app:layout_constraintEnd_toEndOf="@+id/username_field"
+                app:layout_constraintTop_toTopOf="@+id/username_field"
+                app:trackThickness="@dimen/keyline_1" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/password_field"
                 style="@style/Widget.Parrot.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_3"
+                android:layout_marginTop="@dimen/keyline_3"
                 android:layout_marginEnd="@dimen/keyline_3"
                 android:hint="@string/hint_password"
-                android:paddingBottom="@dimen/keyline_3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/username_field"
@@ -135,7 +148,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
+                    android:inputType="numberPassword"
+                    android:maxLength="8"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -146,9 +160,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_3"
+                android:layout_marginTop="@dimen/keyline_3"
                 android:layout_marginEnd="@dimen/keyline_3"
                 android:hint="@string/hint_birthday"
-                android:paddingBottom="@dimen/keyline_3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/password_field">
@@ -156,7 +170,10 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="date"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:inputType="text"
                     android:maxLines="1" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -165,6 +182,7 @@
                 android:id="@+id/done_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/keyline_3"
                 android:layout_marginBottom="@dimen/keyline_4"
                 android:paddingStart="@dimen/keyline_6"
                 android:paddingEnd="@dimen/keyline_6"

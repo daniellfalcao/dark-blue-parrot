@@ -4,6 +4,7 @@ import com.github.daniellfalcao.common.di.feature.authentication.AuthenticationF
 import com.github.daniellfalcao.common.di.feature.bookmark.BookmarkFeatureDI
 import com.github.daniellfalcao.common.di.feature.home.HomeFeatureDI
 import com.github.daniellfalcao.common.di.feature.profile.ProfileFeatureDI
+import org.koin.core.context.loadKoinModules
 import java.util.ServiceLoader
 
 object KoinFeatureInjector {
@@ -16,25 +17,25 @@ object KoinFeatureInjector {
     fun attemptInjectModules() {
         if (!isAuthenticationModuleInjected) {
             withFeature<AuthenticationFeatureDI> {
-                inject()
+                loadKoinModules(inject())
                 isAuthenticationModuleInjected = true
             }
         }
         if (!isBookmarkModuleInjected) {
             withFeature<BookmarkFeatureDI> {
-                inject()
+                loadKoinModules(inject())
                 isBookmarkModuleInjected = true
             }
         }
         if (!isHomeModuleInjected) {
             withFeature<HomeFeatureDI> {
-                inject()
+                loadKoinModules(inject())
                 isHomeModuleInjected = true
             }
         }
         if (!isProfileModuleInjected) {
             withFeature<ProfileFeatureDI> {
-                inject()
+                loadKoinModules(inject())
                 isProfileModuleInjected = true
             }
         }

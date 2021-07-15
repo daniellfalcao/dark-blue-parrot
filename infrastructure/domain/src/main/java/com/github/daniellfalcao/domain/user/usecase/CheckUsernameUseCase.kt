@@ -13,13 +13,17 @@ import com.github.daniellfalcao.domain.user.repository.UserRepository
  * @return ParrotResult.Success if username is valid and is available or not
  * @return ParrotResult.Failure if username is not valid or because some error in API
  *
+ * ParrotResult.Failure can assume the following exceptions:
+ *  - [InvalidUsernameException]
+ *  and service error handling generic exceptions
+ *
  * */
 class CheckUsernameUseCase(private val userRepository: UserRepository) {
 
     suspend operator fun invoke(
         username: String
     ): ParrotResult<UsernameAvailabilityDTO> = runCatching {
-        if (userRepository.isUsernameValid(username)) {
+        if (!userRepository.isUsernameValid(username)) {
             throw InvalidUsernameException()
         }
         userRepository.checkUsernameAvailability(username).getOrThrow()

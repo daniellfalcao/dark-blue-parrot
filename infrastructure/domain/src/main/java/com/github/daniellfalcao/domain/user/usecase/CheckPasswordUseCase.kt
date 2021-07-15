@@ -14,7 +14,7 @@ import com.github.daniellfalcao.domain.user.repository.UserRepository
 class CheckPasswordUseCase(private val userRepository: UserRepository) {
 
     operator fun invoke(password: String) = runCatching {
-        if (userRepository.isPasswordValid(password)) {
+        if (!userRepository.isPasswordValid(password)) {
             throw InvalidPasswordException()
         }
     }

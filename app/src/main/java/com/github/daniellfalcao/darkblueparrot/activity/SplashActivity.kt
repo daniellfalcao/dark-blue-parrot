@@ -37,6 +37,10 @@ class SplashActivity : ParrotActivity<ActivitySplashBinding>() {
                 }
             }
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
         // dispatch view model
         viewModel.dispatchNavigation()
     }
