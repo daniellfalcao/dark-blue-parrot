@@ -3,7 +3,7 @@ package com.github.daniellfalcao.darkblueparrot.application
 import com.github.daniellfalcao.darkblueparrot.BuildConfig
 import com.github.daniellfalcao.darkblueparrot._module.di.AppModule
 import com.github.daniellfalcao.data._module.di.DataModule
-import com.github.daniellfalcao.domain.user._module.di.DomainModule
+import com.github.daniellfalcao.domain._module.di.DomainModule
 import com.google.android.play.core.splitcompat.SplitCompatApplication
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin

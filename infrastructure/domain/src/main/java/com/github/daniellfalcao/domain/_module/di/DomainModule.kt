@@ -1,4 +1,4 @@
-package com.github.daniellfalcao.domain.user._module.di
+package com.github.daniellfalcao.domain._module.di
 
 import com.github.daniellfalcao.common.di.KoinModuleDI
 import com.github.daniellfalcao.domain.user.usecase.CheckAuthenticationStateUseCase
